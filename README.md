@@ -2,7 +2,7 @@
 js-the-weather-app is a simple javascript application that consults the Open Weather API and shows yout the information about the weather of the location you query.
 
 ## Live
-[weather](https://raw.githack.com/hillarioh/Js-Weather-app/weather/index.html)
+[weather](https://zealous-cori-c9e374.netlify.app/)
 
 ## Built With
 - Javascript
