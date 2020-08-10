@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-.container {
+.containe {
     height: 100vh;
     background: linear-gradient(147deg, #757a7dbe 0%, #edf395f5 74%);
     display: flex;
@@ -14,12 +14,13 @@
     transition: padding-top 0.5s ease-in-out;
 }
 
-.container.active {
+.containe.active {
     padding-top: 5vh;
 }
 
 .hidden {
     display: none;
+    /* transition: display 3s ease-in-out; */
 }
 
 #w-title {
