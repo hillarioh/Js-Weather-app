@@ -55,8 +55,8 @@ async function submitCity(city) {
         cityName.textContent = cityResponse.name;
         wTemp.textContent = cityResponse.main.temp;
         wDate.textContent = dayOfWeek();
-        wSunrise.textContent = cityResponse.sys.sunrise;
-        wSunset.textContent = cityResponse.sys.sunset;
+        wSunrise.textContent = convertTime(cityResponse.sys.sunrise)
+        wSunset.textContent = convertTime(cityResponse.sys.sunset);
         wSpeed.textContent = cityResponse.wind.speed;
         wPressure.textContent = cityResponse.main.pressure;
         wDeg.textContent = cityResponse.wind.deg;
@@ -71,4 +71,8 @@ function dayOfWeek(){
     let d = new Date();
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     return days[d.getDay()];
+}
+
+function convertTime(utcTime){
+    return new Date(utcTime* 1000).toLocaleString();
 }
