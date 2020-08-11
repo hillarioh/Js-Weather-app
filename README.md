@@ -17,9 +17,8 @@ js-the-weather-app is a simple javascript application that consults the Open Wea
 
 ## Built With
 - Javascript
-- Bootstrap
+- HTML and CSS
 - Webpack
-- Webpack modules
 
 
 ## Authors
