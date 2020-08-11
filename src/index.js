@@ -1,7 +1,7 @@
 import * as Element from './elements';
 import '../style.css';
 
-let measure = 'F';
+let measure = 'C';
 let temperature = 0.0;
 
 const makeRequest = (city) => new Promise((resolve, reject) => {
@@ -47,15 +47,19 @@ function convertTime(utcTime) {
   return new Date(utcTime * 1000).toLocaleString();
 }
 
-function convertTemp() {
-  return `${Math.round((5 / 9) * (temperature - 32)) / 10} °C`;
+function convertToFaren() {
+  return `${Math.trunc(temperature * 9 / 5 - 459.67)} °F`;
+  
+}
+function convertToCelsius() {
+  return `${Math.trunc(temperature - 273)} °C`;
 }
 
 function populateView(cityResponse) {
   Element.wMain.textContent = cityResponse.weather[0].main;
   Element.cityName.textContent = cityResponse.name;
-  temperature = ((cityResponse.main.temp - 273.15) * 1.8) + 32; 
-  Element.wTemp.textContent = `${temperature}°F`;
+  temperature = cityResponse.main.temp;
+  Element.wTemp.textContent = convertToCelsius();
   Element.wDate.textContent = dayOfWeek();
   Element.wSunrise.textContent = convertTime(cityResponse.sys.sunrise);
   Element.wSunset.textContent = convertTime(cityResponse.sys.sunset);
@@ -92,11 +96,11 @@ Element.myForm.addEventListener('submit', (e) => {
 Element.farenheit.addEventListener('click', () => {
   measure = 'F';
   tempMeasure();
-  Element.wTemp.textContent = `${temperature}°F`;
+  Element.wTemp.textContent = convertToFaren();
 });
 
 Element.celsius.addEventListener('click', () => {
   measure = 'C';
   tempMeasure();
-  Element.wTemp.textContent = convertTemp();
+  Element.wTemp.textContent = convertToCelsius();
 });
