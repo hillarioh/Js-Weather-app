@@ -54,7 +54,7 @@ function convertTemp() {
 function populateView(cityResponse) {
   Element.wMain.textContent = cityResponse.weather[0].main;
   Element.cityName.textContent = cityResponse.name;
-  temperature = cityResponse.main.temp;
+  temperature = ((cityResponse.main.temp - 273.15) * 1.8) + 32; 
   Element.wTemp.textContent = `${temperature}°F`;
   Element.wDate.textContent = dayOfWeek();
   Element.wSunrise.textContent = convertTime(cityResponse.sys.sunrise);
