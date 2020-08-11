@@ -40,39 +40,44 @@ body {
 }
 
 .weather {
-    width: 50%;
+    width: 60%;
     padding: 8px 0;
 }
 
 form {
     text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #city {
     line-height: 3rem;
-    width: 100%;
     font-size: 2rem;
     border: none;
     padding: 0 8px;
     border-radius: 7px;
     text-decoration: none;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-right: 6px;
 }
 
 #submit {
     font-size: 1.5rem;
-    margin: 16px 0;
-    padding: 8px 12px;
+    line-height: 3rem;
+    padding: 0 12px;
+    color: aliceblue;
     border: none;
-    border-radius: 5px;
-    background-color: khaki;
+    border-radius: 7px;
+    background-color: #8a8028;
 }
 
 #status {
     height: 50vh;
 }
 
-#status p{
+#status p {
     font-size: 3rem;
     font-weight: 500;
     text-align: center;
@@ -116,6 +121,7 @@ form {
     flex-direction: column;
 }
 
-.end small, .end p {
+.end small,
+.end p {
     text-align: end;
 }

@@ -22,7 +22,6 @@ myForm.addEventListener("submit", (e) => {
          return;
     }
     myContainer.classList.add('active');
-    submitInput.classList.add('hidden');
     submitCity(cityInput.value);
     myForm.reset();
 });
