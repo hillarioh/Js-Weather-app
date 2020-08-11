@@ -72,12 +72,14 @@ function populateView(cityResponse) {
 async function submitCity(city) {
   try {
     const cityResponse = await makeRequest(city);
+    Element.requestStatus.classList.add("hidden");
     Element.weatherCurrent.classList.remove('hidden');
     tempMeasure();
     populateView(cityResponse);
   } catch (error) {
     Element.requestStatus.classList.remove('hidden');
-    Element.requestStatus.innerHTML = `<p>${error}`;
+    Element.weatherCurrent.classList.add("hidden");
+    Element.requestStatus.innerHTML = `<p>${error}</p>`;
   }
 }
 
