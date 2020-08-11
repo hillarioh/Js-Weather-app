@@ -1,4 +1,5 @@
 import * as Element from './elements';
+import '../style.css';
 
 let measure = 'F';
 let temperature = 0.0;
