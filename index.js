@@ -2,6 +2,7 @@ const myForm = document.querySelector('form');
 const cityInput = document.getElementById('city');
 const submitInput = document.getElementById('submit');
 const myContainer = document.querySelector('.containe');
+const request_status = document.getElementById('status');
 const weatherCurrent = document.getElementById('current-weather');
 const wMain = document.getElementById('w-main');
 const cityName = document.getElementById('city-name');
@@ -16,24 +17,32 @@ const wHumidity = document.getElementById('w-humidity');
 
 myForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log("enetred values");
+    if (!cityInput.value) {
+         alert("Enter city name");
+         return;
+    }
     myContainer.classList.add('active');
     submitInput.classList.add('hidden');
     submitCity(cityInput.value);
     myForm.reset();
-    // setTimeout(() => { }, 500);
 });
 
 const makeRequest = (city)=>{
     return new Promise((resolve,reject)=>{
 
-        // url (required), options (optional)
         fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=b34fddd3dae4a2eb0ad363b62f98ba1e', {
             method: 'get'
-        }).then(function (response) {            
-            resolve(response.json());
-        }).catch(function (err) {
-            reject(err.json());
+        }).then(function (response) {
+            if (response.status >= 200 && response.status < 300) {
+                resolve(response.json());
+            } else {
+                console.log(response);
+                reject(new Error(response.statusText));
+            }        
+            
+        }).catch(function (err) {  
+            request_status.classList.remove("hidden");
+            request_status.innerHTML = `<p>Request failed, ${err}</p>`;
         });   
     });
 }
@@ -46,7 +55,7 @@ async function submitCity(city) {
         wMain.textContent = cityResponse.weather[0].main;
         cityName.textContent = cityResponse.name;
         wTemp.textContent = cityResponse.main.temp;
-        wDate.textContent = Date.now();
+        wDate.textContent = dayOfWeek();
         wSunrise.textContent = cityResponse.sys.sunrise;
         wSunset.textContent = cityResponse.sys.sunset;
         wSpeed.textContent = cityResponse.wind.speed;
@@ -54,6 +63,13 @@ async function submitCity(city) {
         wDeg.textContent = cityResponse.wind.deg;
         wHumidity.textContent = cityResponse.main.humidity;
     } catch (error) {
-        wMain.textContent = error.error;                     
+        request_status.classList.remove("hidden");
+        request_status.innerHTML = `<p>${error}`;
     }
+}
+
+function dayOfWeek(){
+    let d = new Date();
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return days[d.getDay()];
 }
