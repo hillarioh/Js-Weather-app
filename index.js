@@ -14,6 +14,11 @@ const wSpeed = document.getElementById('w-speed');
 const wPressure = document.getElementById('w-pressure');
 const wDeg = document.getElementById('w-deg');
 const wHumidity = document.getElementById('w-humidity');
+const celsius = document.getElementById('C');
+const farenheit = document.getElementById('F');
+
+let measure = "F";
+let temperature= 0.0;
 
 myForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -51,20 +56,39 @@ async function submitCity(city) {
     try {
         const cityResponse = await makeRequest(city);
         weatherCurrent.classList.remove('hidden');
-        wMain.textContent = cityResponse.weather[0].main;
-        cityName.textContent = cityResponse.name;
-        wTemp.textContent = cityResponse.main.temp;
-        wDate.textContent = dayOfWeek();
-        wSunrise.textContent = convertTime(cityResponse.sys.sunrise)
-        wSunset.textContent = convertTime(cityResponse.sys.sunset);
-        wSpeed.textContent = cityResponse.wind.speed;
-        wPressure.textContent = cityResponse.main.pressure;
-        wDeg.textContent = cityResponse.wind.deg;
-        wHumidity.textContent = cityResponse.main.humidity;
+        tempMeasure();
+        populateView(cityResponse);
+        
     } catch (error) {
         request_status.classList.remove("hidden");
         request_status.innerHTML = `<p>${error}`;
     }
+}
+
+farenheit.addEventListener('click',()=>{
+    measure = 'F';
+    tempMeasure();
+    wTemp.textContent = temperature + '°F';
+});
+
+celsius.addEventListener('click',()=>{
+    measure = 'C';
+    tempMeasure();
+    wTemp.textContent = convertTemp();
+});
+
+function populateView(cityResponse){
+    wMain.textContent = cityResponse.weather[0].main;
+    cityName.textContent = cityResponse.name;
+    temperature = cityResponse.main.temp, measure;
+    wTemp.textContent = temperature + '°F';
+    wDate.textContent = dayOfWeek();
+    wSunrise.textContent = convertTime(cityResponse.sys.sunrise)
+    wSunset.textContent = convertTime(cityResponse.sys.sunset);
+    wSpeed.textContent = cityResponse.wind.speed;
+    wPressure.textContent = cityResponse.main.pressure;
+    wDeg.textContent = cityResponse.wind.deg;
+    wHumidity.textContent = cityResponse.main.humidity;
 }
 
 function dayOfWeek(){
@@ -75,4 +99,18 @@ function dayOfWeek(){
 
 function convertTime(utcTime){
     return new Date(utcTime* 1000).toLocaleString();
+}
+
+function tempMeasure(){
+    if (measure==='F'){
+        farenheit.style.backgroundColor = "#559999";
+        celsius.style.backgroundColor = "#375d5d";        
+    } else{
+        farenheit.style.backgroundColor = "#375d5d";
+        celsius.style.backgroundColor = "#559999";
+    }
+}
+
+function convertTemp(){    
+        return `${Math.round((5 / 9) * (temperature - 32))/10} °C`;    
 }
