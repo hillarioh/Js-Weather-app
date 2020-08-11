@@ -25,7 +25,6 @@ body {
 
 .hidden {
   display: none;
-
 }
 
 #w-title {
@@ -80,6 +79,9 @@ form {
 #current-weather {
   margin-top: 2rem;
   width: 60%;
+  background: #e7d8f5;
+  opacity: 60%;
+  padding: 8px 1.5rem;
 }
 
 .location {

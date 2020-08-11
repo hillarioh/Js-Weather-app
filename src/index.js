@@ -1,4 +1,5 @@
 import * as Element from './elements';
+import changeBg from './view';
 import '../style.css';
 
 let measure = 'C';
@@ -48,14 +49,14 @@ function convertTime(utcTime) {
 }
 
 function convertToFaren() {
-  return `${Math.trunc(temperature * 9 / 5 - 459.67)} °F`;
-  
+  return `${Math.trunc(temperature * (9 / 5) - 459.67)} °F`;
 }
 function convertToCelsius() {
   return `${Math.trunc(temperature - 273)} °C`;
 }
 
 function populateView(cityResponse) {
+  changeBg((cityResponse.weather[0].main).toLowerCase());
   Element.wMain.textContent = cityResponse.weather[0].main;
   Element.cityName.textContent = cityResponse.name;
   temperature = cityResponse.main.temp;
@@ -72,13 +73,13 @@ function populateView(cityResponse) {
 async function submitCity(city) {
   try {
     const cityResponse = await makeRequest(city);
-    Element.requestStatus.classList.add("hidden");
+    Element.requestStatus.classList.add('hidden');
     Element.weatherCurrent.classList.remove('hidden');
     tempMeasure();
     populateView(cityResponse);
   } catch (error) {
     Element.requestStatus.classList.remove('hidden');
-    Element.weatherCurrent.classList.add("hidden");
+    Element.weatherCurrent.classList.add('hidden');
     Element.requestStatus.innerHTML = `<p>${error}</p>`;
   }
 }
