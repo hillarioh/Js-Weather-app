@@ -1,0 +1,38 @@
+{
+  "name": "js-weather-app",
+  "version": "1.0.0",
+  "description": "js-the-weather-app is a simple javascript application that consults the Open Weather API and shows you the information about the weather of the location you query.",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hillarioh/Js-Weather-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hillarioh/Js-Weather-app/issues"
+  },
+  "homepage": "https://github.com/hillarioh/Js-Weather-app#readme",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.2.0",
+    "eslint": "^7.6.0",
+    "eslint-plugin-import": "^2.22.0",
+    "file-loader": "^6.0.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "eslint-config-airbnb-base": "^14.2.0"
+  }
+}

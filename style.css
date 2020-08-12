@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+}
+
+.containe {
+  height: 100vh;
+  background: linear-gradient(147deg, #757a7dbe 0%, #edf395f5 74%);
+  font-family: "Quicksand", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40vh;
+  transition: padding-top 0.5s ease-in-out;
+}
+
+.containe.active {
+  padding-top: 5vh;
+}
+
+.hidden {
+  display: none;
+}
+
+#w-title {
+  font-size: 3rem;
+  font-family: sans-serif;
+  font-weight: 800;
+  width: 100%;
+  text-align: center;
+  line-height: 3rem;
+  margin: 1rem 0;
+  color: #6e6675;
+}
+
+.weather {
+  width: 60%;
+  padding: 8px 0;
+}
+
+form {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#city {
+  line-height: 3rem;
+  font-size: 2rem;
+  border: none;
+  padding: 0 8px;
+  border-radius: 7px;
+  text-decoration: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-right: 6px;
+}
+
+#submit {
+  font-size: 1.5rem;
+  line-height: 3rem;
+  padding: 0 12px;
+  color: aliceblue;
+  border: none;
+  border-radius: 7px;
+  background-color: #8a8028;
+}
+
+#status {
+  height: 50vh;
+}
+
+#current-weather {
+  margin-top: 2rem;
+  width: 60%;
+  background: #e7d8f5;
+  opacity: 60%;
+  padding: 8px 1.5rem;
+}
+
+.location {
+  width: 100%;
+  text-align: center;
+}
+
+.convert {
+  background: #375d5d;
+  padding: 12px 8px;
+  width: fit-content;
+  margin-left: auto;
+  border-radius: 5px;
+}
+
+.convert > span {
+  padding: 8px;
+  border-radius: 5px;
+  color: white;
+  transition: background-color 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.location h2 {
+  font-size: 3.5rem;
+  line-height: 3rem;
+}
+
+.location h4 {
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+
+.weather-detail {
+  margin-top: 2rem;
+}
+
+.weather-detail > div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #757a7dbe;
+  padding: 8px 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.end small,
+.end p {
+  text-align: end;
+}
+
+#status p {
+  font-size: 3rem;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 2rem;
+}
