@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="../style.css"> -->
+    <title>Weather Api</title>
+</head>
+<body>
+    <div class="containe">
+        <div class="weather">
+            <h4 id="w-title">Weather forecast</h4>
+            <form action="" id="form">
+                <input type="text" name="city" id="city" placeholder="Enter city name">
+                <input type="submit" value="search" id="submit">
+            </form>
+            <div  class="hidden" id="status"></div>
+        </div>
+        <div class="hidden" id="current-weather">
+            <div class="location">
+                <div class="con">
+                    <!-- <p id="temperature">54.6°F</p> -->
+                    <div class="convert">
+                    <span id="F">°F</span>
+                    <span id="C">°C</span>
+                    </div>
+                </div>
+                <h2 id="city-name"></h2>
+                <h4 id="w-main"></h4>
+            </div>
+            <div class="weather-detail">
+                <div id="list1">
+                    <h2 id="w-date"></h2>
+                    <h2 id="w-temp"></h2>
+                </div>
+                <div id="list2">
+                    <div class="item "><small>Sun Rise</small>
+                        <p id="w-sunrise"></p>
+                    </div>
+                    <div class="item end"><small>Sun Set</small>
+                        <p id="w-sunset"></p>
+                    </div>
+                </div>
+                <div id="list3">
+                    <div class="item"><small>Wind Speed</small>
+                        <p id="w-speed"></p>
+                    </div>
+                    <div class="item end"><small>Wind Degree</small>
+                        <p id="w-deg"></p>
+                    </div>
+                </div>
+                <div id="list4">
+                    <div class="item">
+                        <small>Humidity</small>
+                        <p id="w-humidity"></p>
+                    </div>
+                    <div class="item end"><small>Pressure</small>
+                        <p  id="w-pressure"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
